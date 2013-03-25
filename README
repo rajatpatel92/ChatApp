@@ -1,4 +1,6 @@
-Still under basic development and test project in order to learn the real thing.
+A Project By Very Beginners
+
+Still under very basic development and more of a test project rather than a professional one in order to learn the real thing.
 
 Target 1 : Build a console app for chatting between two clients connected to a same server.
 Target 2 : Add support for the multiple users with multi-threading.
