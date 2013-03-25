@@ -16,8 +16,8 @@ import java.util.logging.Logger;
  */
 public class Client {
     Socket clientSocket;
-    public void establishConnection(String dest_ip) {
-        //boolean isEstablished=false;
+    public boolean establishConnection(String dest_ip) {
+        boolean isEstablished=false;
         try {
             
             clientSocket = new Socket(dest_ip, 18888);
@@ -26,6 +26,6 @@ public class Client {
         } catch (IOException ex) {
             Logger.getLogger(Client.class.getName()).log(Level.SEVERE, null, ex);
         }
-        //return isEstablished;
+        return isEstablished;
     }
 }
