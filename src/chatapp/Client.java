@@ -4,9 +4,12 @@
  */
 package chatapp;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
 import java.net.Socket;
-import java.net.UnknownHostException;
+import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -14,17 +17,31 @@ import java.util.logging.Logger;
  *
  * @author Rajat
  */
-public class Client {
-    Socket clientSocket;
-    public void establishConnection(String dest_ip) {
-        //boolean isEstablished=false;
+public class Client
+{
+        public static PrintWriter toServer = null;
+        public static BufferedReader fromServer = null;
+        public static Socket socket = null;
+        public static void main (String[] args) throws java.lang.NullPointerException, IOException{
         try {
-            clientSocket = new Socket(dest_ip, 18888);
-        } catch (UnknownHostException ex) {
-            Logger.getLogger(Client.class.getName()).log(Level.SEVERE, null, ex);
+            socket = new Socket("127.0.0.1",3000);
+            toServer = new PrintWriter(socket.getOutputStream(),true);
+            fromServer = new BufferedReader(new InputStreamReader(socket.getInputStream()));
         } catch (IOException ex) {
             Logger.getLogger(Client.class.getName()).log(Level.SEVERE, null, ex);
         }
-        //return isEstablished;
-    }
+        String msg = "";
+            Scanner scanner = new Scanner(System.in);
+            while (!"exit".equals(msg))
+            {
+                System.out.print("You : ");
+                msg = scanner.nextLine();
+                toServer.println(msg);
+                String tmp = fromServer.readLine();
+                System.out.println("Server : " + tmp);
+            }
+            fromServer.close();
+            toServer.close();
+            socket.close();
+        }
 }
