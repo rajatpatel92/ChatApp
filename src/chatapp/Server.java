@@ -22,7 +22,7 @@ public class Server {
         private static PrintWriter toClient;
         private static BufferedReader fromClient;
         public static void run() throws IOException{
-            System.out.println("Server is waiting for connections...");
+            System.out.println("Server is waiting for clients to initiate chat...");
             while (true)
             {
                 openStreams();
@@ -50,7 +50,6 @@ public class Server {
                 msg = fromClient.readLine();
                 System.out.println("Client : "+msg);
                 Scanner sc = new Scanner(System.in);
-                
                 System.out.print("Server : ");
                 reply = sc.nextLine();
                 toClient.println(reply);
