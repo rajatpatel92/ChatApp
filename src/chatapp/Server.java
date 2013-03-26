@@ -22,7 +22,7 @@ public class Server {
         private static PrintWriter toClient;
         private static BufferedReader fromClient;
         public static void run() throws IOException{
-            System.out.println("Server is waiting for clients to initiate chat...");
+            System.out.println("Server is waiting for clients to initiate chat.....");
             while (true)
             {
                 openStreams();
