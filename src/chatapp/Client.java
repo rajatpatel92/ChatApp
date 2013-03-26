@@ -16,16 +16,15 @@ import java.util.logging.Logger;
  */
 public class Client {
     Socket clientSocket;
-    public boolean establishConnection(String dest_ip) {
-        boolean isEstablished=false;
+    public void establishConnection(String dest_ip) {
+        //boolean isEstablished=false;
         try {
-            
             clientSocket = new Socket(dest_ip, 18888);
         } catch (UnknownHostException ex) {
             Logger.getLogger(Client.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
             Logger.getLogger(Client.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return isEstablished;
+        //return isEstablished;
     }
 }

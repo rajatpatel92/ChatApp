@@ -18,8 +18,6 @@ public class ChatApp {
         System.out.println("Start Of The Program");
         Server ss = new Server();
         ss.createServer();
-        //Connect c1 = new Connect();
-        //c1.establishConnection("127.0.0.1");
         System.out.println("End Of The Program");
     }
 }
