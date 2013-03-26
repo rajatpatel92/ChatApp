@@ -7,29 +7,54 @@ package chatapp;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.lang.*;
+import java.util.Scanner;
 
 /**
  *
  * @author Rajat
  */
-
-
 public class Server {
-    private static ServerSocket serverSocket;
-    private static Socket clientSocket;
-    private static BufferedReader bufferedReader;
-    private static String inputLine;
-    //int port;
-    public void createServer() throws IOException {
-        serverSocket = new ServerSocket(5000);
-        clientSocket = serverSocket.accept();
-        // Create a reader
-        bufferedReader = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
-        // Get the client message
-        while((inputLine = bufferedReader.readLine()) != null)
-        System.out.println(inputLine);
-    }
+       private static ServerSocket serverSocket;
+        private static Socket socket;
+        private static PrintWriter toClient;
+        private static BufferedReader fromClient;
+        public static void run() throws IOException{
+            System.out.println("Server is waiting for connections...");
+            while (true)
+            {
+                openStreams();
+                processClient();
+                closeStreams();
+            }
+        }
+
+        public static void openStreams() throws IOException{
+            serverSocket = new ServerSocket(3000);
+            socket = serverSocket.accept();
+            toClient = new PrintWriter(socket.getOutputStream(),true);
+            fromClient = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+        }
+        public static void closeStreams() throws IOException{
+            fromClient.close();
+            toClient.close();
+            socket.close();
+            serverSocket.close();
+        }
+        public static void processClient()throws IOException{
+            String msg;
+            String reply;
+            do {
+                msg = fromClient.readLine();
+                System.out.println("Client : "+msg);
+                Scanner sc = new Scanner(System.in);
+                
+                System.out.print("Server : ");
+                reply = sc.nextLine();
+                toClient.println(reply);
+            } while (!"exit".equals(msg));
+        }
 }
+
