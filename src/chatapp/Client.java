@@ -23,14 +23,14 @@ public class Client
         public static BufferedReader fromServer = null;
         public static Socket socket = null;
         public static void main (String[] args) throws java.lang.NullPointerException, IOException{
-        try {
-            socket = new Socket("127.0.0.1",3000);
-            toServer = new PrintWriter(socket.getOutputStream(),true);
-            fromServer = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-        } catch (IOException ex) {
-            Logger.getLogger(Client.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        String msg = "";
+            try {
+                socket = new Socket("127.0.0.1",3000);
+                toServer = new PrintWriter(socket.getOutputStream(),true);
+                fromServer = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+            } catch (IOException ex) {
+                Logger.getLogger(Client.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            String msg = "";
             Scanner scanner = new Scanner(System.in);
             while (!"exit".equals(msg))
             {
