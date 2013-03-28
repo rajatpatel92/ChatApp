@@ -20,8 +20,9 @@ class OpenServerStreams {
     //ByteArrayOutputStream out;
     //InputStreamReader in;
     public void openStreams() throws IOException{
-        serverSocket = new ServerSocket(5555);
+        serverSocket = new ServerSocket(5995);
         socket = serverSocket.accept();
+        System.out.println("Server Started...waiting for client..");
         System.out.println("Accepted connection : " + socket);
         os = socket.getOutputStream();
         //out = new ByteArrayOutputStream();
@@ -34,7 +35,7 @@ class OpenClientStreams {
     Socket clientSocket;
     InputStream is;
     public void openStreams() throws IOException{
-        clientSocket = new Socket("127.0.0.1", 5555);
+        clientSocket = new Socket("127.0.0.1", 5995);
         System.out.println("Connecting...");
         is = clientSocket.getInputStream();
         //out = new ByteArrayOutputStream();

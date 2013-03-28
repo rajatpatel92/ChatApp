@@ -37,33 +37,33 @@ public class FileFunctions {
         
     }
     public void sendFiletoClient(String fName) throws UnknownHostException, IOException{
-		  File myFile = new File (fName);
-		  byte [] mybytearray  = new byte [(int)myFile.length()];
-		  FileInputStream fis = new FileInputStream(myFile);
-		  BufferedInputStream bis = new BufferedInputStream(fis);
-		  bis.read(mybytearray,0,mybytearray.length);
-		  System.out.println("Sending...");
-		  oss.os.write(mybytearray,0,mybytearray.length);
-		  oss.os.flush();
+        File myFile = new File (fName);
+        byte [] mybytearray  = new byte [(int)myFile.length()];
+        FileInputStream fis = new FileInputStream(myFile);
+        BufferedInputStream bis = new BufferedInputStream(fis);
+        bis.read(mybytearray,0,mybytearray.length);
+        System.out.println("Sending...");
+        oss.os.write(mybytearray,0,mybytearray.length);
+        oss.os.flush();
+        System.out.println("File Sent Successfully!!");
     }
     public void receiveFilefromServer(String fn) throws IOException{
-                File file = new File(fn);
-		fos = new FileOutputStream(file);
-                byte [] mybytearray  = new byte [(int)file.length()];
-		BufferedOutputStream bos = new BufferedOutputStream(fos);
-                //InputStream is = sock.getInputStream();
-		bytesRead = ocs.is.read(mybytearray,0,mybytearray.length);
-		current = bytesRead;
-		do {
-		   bytesRead =
-			  ocs.is.read(mybytearray, current, (mybytearray.length-current));
-		   if(bytesRead >= 0) current += bytesRead;
-		} while(bytesRead > -1);
-		bos.write(mybytearray, 0 , current);
-		bos.flush();
-		bos.close();
-                ocs.clientSocket.close();
-		}
+        File file = new File(fn);
+        fos = new FileOutputStream(file);
+        byte [] mybytearray  = new byte [(int)file.length()];
+        try (BufferedOutputStream bos = new BufferedOutputStream(fos)) {
+            bytesRead = ocs.is.read(mybytearray,0,mybytearray.length);
+            current = bytesRead;
+            do {
+                bytesRead =
+                        ocs.is.read(mybytearray, current, (mybytearray.length-current));
+                if(bytesRead >= 0) current += bytesRead;
+            } while(bytesRead > -1);
+            bos.write(mybytearray, 0 , current);
+            bos.flush();
+        }
+        ocs.clientSocket.close();
+        }
     public void receiveFilefromClient(String fn) throws IOException{
         
     }

@@ -5,20 +5,24 @@
 package chatapp;
 
 import java.io.IOException;
+import java.util.Scanner;
 
 /**
  *
  * @author Rajat
  */
 public class FileServer {
-    //private ServerSocket serverSocket;
-    //private Socket socket;
-    //private ByteArrayOutputStream out;
-    //private InputStreamReader in;
-    public void run() throws IOException{
-		FileFunctions ff = new FileFunctions("Server");
-                ff.sendFiletoClient("toClient.txt");
-	}
-            //}
-        } 
+    static Scanner sc;
+    public static void main(String[] args) throws IOException{
+        sc = new Scanner (System.in);
+        while (true){
+            FileFunctions ff = new FileFunctions("Server");
+            System.out.println("Enter name of the file to be sent :");
+            String fileName = sc.nextLine();
+            //byte[] name = fileName.getBytes();
+            //ff.oss.os.write(name);
+            ff.sendFiletoClient(fileName);
+        }
+    }
+}
  
