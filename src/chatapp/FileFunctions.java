@@ -1,7 +1,4 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package chatapp;
 
 import java.io.*;
@@ -12,15 +9,11 @@ import java.net.UnknownHostException;
  * @author Rajat
  */
 public class FileFunctions {
-    //private FileInputStream is;
     private FileOutputStream fos;
-    //private InputStreamReader in;
     OpenServerStreams oss;
     OpenClientStreams ocs;
-	//int filesize=6022386; 
     int bytesRead;
     int current = 0;
-    //private ByteArrayOutputStream out;
     FileFunctions(String a) throws IOException{
         switch (a) {
             case "Server":

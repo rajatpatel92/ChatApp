@@ -1,7 +1,4 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package chatapp;
 
 import java.io.IOException;
@@ -17,17 +14,12 @@ class OpenServerStreams {
     private ServerSocket serverSocket;
     private Socket socket;
     OutputStream os;
-    //ByteArrayOutputStream out;
-    //InputStreamReader in;
     public void openStreams() throws IOException{
         serverSocket = new ServerSocket(5995);
         socket = serverSocket.accept();
         System.out.println("Server Started...waiting for client..");
         System.out.println("Accepted connection : " + socket);
         os = socket.getOutputStream();
-        //out = new ByteArrayOutputStream();
-        //out.writeTo(socket.getOutputStream());
-        //in = new InputStreamReader(socket.getInputStream());
     }
 }
 
@@ -38,8 +30,5 @@ class OpenClientStreams {
         clientSocket = new Socket("127.0.0.1", 5995);
         System.out.println("Connecting...");
         is = clientSocket.getInputStream();
-        //out = new ByteArrayOutputStream();
-        //out.writeTo(clientSocket.getOutputStream());
-        //in = new InputStreamReader(clientSocket.getInputStream());
     }
 }
