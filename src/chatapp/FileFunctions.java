@@ -37,14 +37,15 @@ public class FileFunctions {
         bis.read(mybytearray,0,mybytearray.length);
         System.out.println("Sending...");
         oss.os.write(mybytearray,0,mybytearray.length);
-        oss.os.flush();
+        //oss.os.flush();
         System.out.println("File Sent Successfully!!");
     }
     public void receiveFilefromServer(String fn) throws IOException{
         File file = new File(fn);
         fos = new FileOutputStream(file);
+        System.out.println("Receiving File..");
         byte [] mybytearray  = new byte [(int)file.length()];
-        try (BufferedOutputStream bos = new BufferedOutputStream(fos)) {
+        BufferedOutputStream bos = new BufferedOutputStream(fos);
             bytesRead = ocs.is.read(mybytearray,0,mybytearray.length);
             current = bytesRead;
             do {
@@ -54,8 +55,9 @@ public class FileFunctions {
             } while(bytesRead > -1);
             bos.write(mybytearray, 0 , current);
             bos.flush();
-        }
+            System.out.println("File received successfully..\nClosing Connection...");
         ocs.clientSocket.close();
+        System.out.println("Connection Closed");
         }
     public void receiveFilefromClient(String fn) throws IOException{
         

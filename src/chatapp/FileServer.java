@@ -14,11 +14,11 @@ public class FileServer {
         sc = new Scanner (System.in);
         while (true){
             FileFunctions ff = new FileFunctions("Server");
-            System.out.println("Enter name of the file to be sent :");
-            String fileName = sc.nextLine();
+            //System.out.println("Enter name of the file to be sent :");
+            //String fileName = sc.nextLine();
             //byte[] name = fileName.getBytes();
             //ff.oss.os.write(name);
-            ff.sendFiletoClient(fileName);
+            ff.sendFiletoClient("toClient.txt");
         }
     }
 }
