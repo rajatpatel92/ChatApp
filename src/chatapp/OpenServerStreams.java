@@ -11,7 +11,7 @@ import java.net.Socket;
  */
 public class OpenServerStreams {
     ServerSocket serverSocket;
-    private Socket socket;
+    Socket socket;
     OutputStream os;
     OpenServerStreams() throws IOException{
         serverSocket = new ServerSocket(5995);
