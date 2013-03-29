@@ -12,8 +12,9 @@ public class FileServer {
     static Scanner sc;
     public static void main(String[] args) throws IOException{
         sc = new Scanner (System.in);
+        FileFunctions ff = new FileFunctions("Server");
         while (true){
-            FileFunctions ff = new FileFunctions("Server");
+            ff.oss.openStreams();
             System.out.println("Enter name or path of the file to be sent :");
             String fileName = sc.nextLine();
             //byte[] name = fileName.getBytes();
