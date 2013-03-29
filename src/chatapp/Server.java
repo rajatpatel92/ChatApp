@@ -18,7 +18,7 @@ public class Server {
         private static Socket socket;
         private static PrintWriter toClient;
         private static BufferedReader fromClient;
-        public static void run() throws IOException{
+        public static void runServer() throws IOException{
             System.out.println("Server is waiting for clients to initiate chat.....");
             while (true)
             {
@@ -50,7 +50,7 @@ public class Server {
                 System.out.print("Server : ");
                 reply = sc.nextLine();
                 toClient.println(reply);
-            } while (!"exit".equals(msg));
+            } while (true);
         }
 }
 

@@ -13,7 +13,7 @@ public class ChatApp {
      */
     public static void main(String[] args) throws IOException {
         System.out.println("Start Of The Program");
-        Server.run();
+        Server.runServer();
         System.out.println("End Of The Program");
     }
 }
