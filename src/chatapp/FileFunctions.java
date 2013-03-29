@@ -29,22 +29,19 @@ public class FileFunctions {
         
     }
     public void sendFiletoClient(String fName) throws UnknownHostException, IOException{
-        while(true){
-            oss.openStreams();
-            File myFile = new File (fName);
-            byte [] mybytearray  = new byte [(int)myFile.length()];
-            FileInputStream fis = new FileInputStream(myFile);
-            BufferedInputStream bis = new BufferedInputStream(fis);
-            bis.read(mybytearray,0,mybytearray.length);
-            System.out.println("Sending...");
-            oss.os.write(mybytearray,0,mybytearray.length);
-            oss.os.flush();
-            System.out.println("File Sent Successfully!!");
-        }
+        File myFile = new File (fName);
+        byte [] mybytearray  = new byte [(int)myFile.length()];
+        FileInputStream fis = new FileInputStream(myFile);
+        BufferedInputStream bis = new BufferedInputStream(fis);
+        bis.read(mybytearray,0,mybytearray.length);
+        System.out.println("Sending...");
+        oss.os.write(mybytearray,0,mybytearray.length);
+        oss.os.flush();
+        System.out.println("File Sent Successfully!!");
     }
     public void receiveFilefromServer(String fn) throws IOException{
         int bytesRead;
-        int current = 0;
+        int current = 0; //Kept for future use.
         int filesize=6022386;
         File file = new File(fn);
         fos = new FileOutputStream(file);
