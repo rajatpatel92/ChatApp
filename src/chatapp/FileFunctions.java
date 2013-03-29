@@ -55,7 +55,7 @@ public class FileFunctions {
         System.out.println("Step 2");
         bytesRead = ocs.is.read(mybytearray,0,mybytearray.length);
         System.out.println("Step 3");
-        current = bytesRead;
+        /*current = bytesRead;
         System.out.println("Step 3");
         do {
             bytesRead = ocs.is.read(mybytearray, current, (mybytearray.length-current));
@@ -63,8 +63,8 @@ public class FileFunctions {
             if(bytesRead >= 0) current += bytesRead;
             System.out.println(current);
         } while(bytesRead > -1);
-        System.out.println("Step 4");
-        bos.write(mybytearray, 0 , current);
+        System.out.println("Step 4");*/
+        bos.write(mybytearray, 0 , bytesRead);
         System.out.println("Step 5");
         bos.flush();
         System.out.println("Step 6");
