@@ -17,10 +17,8 @@ public class FileServer {
             ff.oss.openStreams();
             System.out.println("Enter name or path of the file to be sent :");
             String fileName = sc.nextLine();
-            //byte[] name = fileName.getBytes();
-            //ff.oss.os.write(name);
-            //ff.oss.os.flush();
             ff.sendFiletoClient(fileName);
+            ff.receiveFilefromClient("fromClient.txt");
         }
     }
 }
