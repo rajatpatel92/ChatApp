@@ -1,2 +1,0 @@
-chatapp.OpenServerStreams
-chatapp.OpenClientStreams

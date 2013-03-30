@@ -1,5 +1,5 @@
 
-package chatapp;
+package chatapp.chat;
 
 import java.io.IOException;
 

@@ -1,5 +1,5 @@
 
-package chatapp;
+package chatapp.filesharing;
 
 import java.io.*;
 import java.net.UnknownHostException;
