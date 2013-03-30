@@ -10,8 +10,7 @@ import java.io.IOException;
 public class Server {
     public static void main(String[] args) throws IOException{
         System.out.println("Server is waiting for clients to initiate chat.....");
-        while (true)
-        {
+        while (true){
             ChatFunctions cf = new ChatFunctions("Server");
             System.out.println("Connected : "+ cf.osc.socket);
             cf.serverChat();
