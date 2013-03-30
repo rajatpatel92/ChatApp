@@ -8,7 +8,7 @@ import java.io.IOException;
  * @author Rajat
  */
 public class Server {
-    public static void runServer() throws IOException{
+    public static void main(String[] args) throws IOException{
         System.out.println("Server is waiting for clients to initiate chat.....");
         while (true)
         {
